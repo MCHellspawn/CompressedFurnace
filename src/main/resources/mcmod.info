@@ -1,0 +1,16 @@
+[
+{
+  "modid": "compressedfurnace",
+  "name": "Compressed Furnace",
+  "description": "Adds a compressed furnace.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MCHellspawn"],
+  "credits": "MCHellspawn",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
