@@ -1,5 +1,7 @@
 package mchellspawn.compressedfurnace;
 
+import org.apache.logging.log4j.Logger;
+
 import mchellspawn.compressedfurnace.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -17,11 +19,15 @@ public class compressedfurnace
 	@SidedProxy(clientSide = reference.CLIENTPROXY, serverSide = reference.SERVERPROXY)
 	public static CommonProxy proxy;
 	
+	public static Logger logger;
+	
 	@EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
         // some example code
         System.out.println("I am pre-init!!");
+        logger = event.getModLog();
+        
     }
 	
 	@EventHandler
