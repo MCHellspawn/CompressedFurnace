@@ -10,6 +10,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.preInit(e);
+		System.out.println("I am CLIENT pre-init!!");
 		
 	}
 
@@ -17,6 +18,7 @@ public class ClientProxy extends CommonProxy {
 	public void Init(FMLInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.Init(e);
+		System.out.println("I am CLIENT init!!");
 		
 	}
 
@@ -24,6 +26,7 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.postInit(e);
+		System.out.println("I am CLIENT post-init!!");
 	}
 
 }

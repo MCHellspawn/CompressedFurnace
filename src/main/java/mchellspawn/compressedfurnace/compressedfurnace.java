@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = reference.MODID, version = reference.VERSION, name = reference.MODNAME, useMetadata = true, acceptedMinecraftVersions = "[1.10.2]")
@@ -25,8 +26,9 @@ public class compressedfurnace
     public void preinit(FMLPreInitializationEvent event)
     {
         // some example code
-        System.out.println("I am pre-init!!");
+        
         logger = event.getModLog();
+        proxy.preInit(event);
         
     }
 	
@@ -34,13 +36,13 @@ public class compressedfurnace
     public void init(FMLInitializationEvent event)
     {
         // some example code
-        System.out.println("I am init!!");
+        proxy.Init(event);
     }
 
 	@EventHandler
-    public void postinit(FMLInitializationEvent event)
+    public void postinit(FMLPostInitializationEvent event)
     {
         // some example code
-        System.out.println("I am post-init!!");
+        proxy.postInit(event);
     }
 }
