@@ -9,5 +9,23 @@ public class reference {
     public static final String CLIENTPROXY = "mchellspawn.compressedfurnace.proxy.ClientProxy";
     public static final String SERVERPROXY = "mchellspawn.compressedfurnace.proxy.ServerProxy";
     
- 
+    public static enum compressedFurnaceItems {
+    	COMPRESSEDFURNACE("compressedfurnace", "ItemCompressedFurnace");
+    	
+    	private String unlocalizedName;
+    	private String registryName;
+    	
+    	compressedFurnaceItems (String unlocalizedName, String registryName) {
+    		this.unlocalizedName = unlocalizedName;
+    		this.registryName = registryName;    				
+    	}
+    	
+    	public String getUnlocalizedName() {
+			return unlocalizedName;
+		}
+    	
+    	public String getRegistryName() {
+			return registryName;
+		}
+    }
 }

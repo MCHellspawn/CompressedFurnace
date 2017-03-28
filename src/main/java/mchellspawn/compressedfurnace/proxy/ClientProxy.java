@@ -1,5 +1,6 @@
 package mchellspawn.compressedfurnace.proxy;
 
+import mchellspawn.compressedfurnace.init.ModItems;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -19,7 +20,7 @@ public class ClientProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 		super.Init(e);
 		System.out.println("I am CLIENT init!!");
-		
+		ModItems.registerRenders();		
 	}
 
 	@Override
