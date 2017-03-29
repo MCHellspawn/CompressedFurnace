@@ -16,14 +16,13 @@ public class ClientProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 		super.preInit(e);
 		System.out.println("I am CLIENT pre-init!!");
-		
+		ModItems.registerRenders();			
 	}
 
 	@Override
 	public void Init(FMLInitializationEvent e) {
 		super.Init(e);
 		System.out.println("I am CLIENT init!!");
-		ModItems.registerRenders();		
 	}
 
 	@Override
