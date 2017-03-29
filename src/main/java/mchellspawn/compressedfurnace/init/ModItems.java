@@ -21,10 +21,9 @@ public class ModItems {
 	
 	public static void registerRenders() {
 		registerRender(compressedfurnace);
-		
 	}
 	
 	private static void registerRender(Item item) {
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(reference.MODID + ":" + item.getUnlocalizedName(), "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 }

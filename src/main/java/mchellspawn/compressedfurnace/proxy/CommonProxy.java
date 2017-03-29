@@ -23,12 +23,9 @@ public class CommonProxy {
 	}
 	
 	public void Init(FMLInitializationEvent e) {
-		
 	}
 	
 	public void postInit(FMLPostInitializationEvent e){
-		
 	}
-	
 	
 }
