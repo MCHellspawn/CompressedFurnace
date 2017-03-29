@@ -1,7 +1,7 @@
 package mchellspawn.compressedfurnace;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import mchellspawn.compressedfurnace.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -27,7 +27,7 @@ public class compressedfurnace
     {
         // some example code
         
-        logger = event.getModLog();
+        logger = LogManager.getFormatterLogger(reference.MODID);
         proxy.preInit(event);
         
     }

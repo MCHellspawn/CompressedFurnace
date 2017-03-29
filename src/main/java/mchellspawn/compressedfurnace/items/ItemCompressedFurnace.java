@@ -9,4 +9,6 @@ public class ItemCompressedFurnace extends Item {
 		setUnlocalizedName(reference.compressedFurnaceItems.COMPRESSEDFURNACE.getUnlocalizedName());
 		setRegistryName(reference.compressedFurnaceItems.COMPRESSEDFURNACE.getRegistryName());
 	}
+	
+	
 }

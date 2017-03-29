@@ -10,24 +10,21 @@ public class ServerProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.preInit(e);
-		System.out.println("I am SERVER pre-init!!");
-		
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Server pre-init");
 	}
 
 	@Override
 	public void Init(FMLInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.Init(e);
-		System.out.println("I am SERVER init!!");
-		
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Server init");
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent e) {
 		// TODO Auto-generated method stub
 		super.postInit(e);
-		System.out.println("I am SERVER post-init!!");
-		
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Server post-init");
 	}
 
 }

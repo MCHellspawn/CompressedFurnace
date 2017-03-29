@@ -28,4 +28,24 @@ public class reference {
 			return registryName;
 		}
     }
+
+    public static enum compressedFurnaceBlocks {
+    	COMPRESSEDFURNACE("compfur", "CompFur");
+    	
+    	private String unlocalizedName;
+    	private String registryName;
+    	
+    	compressedFurnaceBlocks (String unlocalizedName, String registryName) {
+    		this.unlocalizedName = unlocalizedName;
+    		this.registryName = registryName;    				
+    	}
+    	
+    	public String getUnlocalizedName() {
+			return unlocalizedName;
+		}
+    	
+    	public String getRegistryName() {
+			return registryName;
+		}
+    }
 }

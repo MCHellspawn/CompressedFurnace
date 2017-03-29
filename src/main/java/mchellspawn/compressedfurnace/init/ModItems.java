@@ -26,6 +26,7 @@ public class ModItems {
 	}
 	
 	private static void registerRender(Item item) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(),"normal"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(),"inventory"));
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Render for item " + item.getUnlocalizedName() + "registered.");
 	}
 }
