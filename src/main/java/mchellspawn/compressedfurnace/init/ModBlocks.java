@@ -13,6 +13,9 @@ public class ModBlocks {
 
 	public static void init() {
 		compressedfurnace = new BlockCompressedFurnace();
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info(compressedfurnace.getUnlocalizedName());
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info(compressedfurnace.getRegistryName());
+
 	}
 	
 	public static void register() {
@@ -24,7 +27,9 @@ public class ModBlocks {
 	}
 	
 	public static void registerRender(Block block) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(),"inventory"));
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Render for block " + block.getUnlocalizedName() + "registered.");
+		Item item = Item.getItemFromBlock(block);
+		
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(block.getRegistryName(),"inventory"));
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Render for block " + block.getUnlocalizedName() + " registered.");
 	}
 }

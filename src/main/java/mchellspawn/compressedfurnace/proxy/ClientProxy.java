@@ -17,8 +17,8 @@ public class ClientProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 		super.preInit(e);
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Client pre-init");
-		ModItems.registerRenders();			
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Item renders registered");
+		//ModItems.registerRenders();			
+		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("Item renders registered");
 		ModBlocks.registerRenders();			
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Block renders registered");
 

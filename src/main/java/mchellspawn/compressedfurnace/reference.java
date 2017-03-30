@@ -10,7 +10,7 @@ public class reference {
     public static final String SERVERPROXY = "mchellspawn.compressedfurnace.proxy.ServerProxy";
     
     public static enum compressedFurnaceItems {
-    	COMPRESSEDFURNACE("compressedfurnace", "CompressedFurnace");
+    	COMPRESSEDFURNACE("itemcompressedfurnace", "ItemCompressedFurnace");
     	
     	private String unlocalizedName;
     	private String registryName;
@@ -30,7 +30,7 @@ public class reference {
     }
 
     public static enum compressedFurnaceBlocks {
-    	COMPRESSEDFURNACE("compfur", "CompFur");
+    	COMPRESSEDFURNACE("blockcompressedfurnace", "BlockCompressedFurnace");
     	
     	private String unlocalizedName;
     	private String registryName;

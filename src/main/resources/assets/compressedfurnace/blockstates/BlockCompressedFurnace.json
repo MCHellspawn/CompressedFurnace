@@ -1,0 +1,9 @@
+{
+  "defaults": {
+    "model": "compressedfurnace:blocks/BlockCompressedFurnace"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
