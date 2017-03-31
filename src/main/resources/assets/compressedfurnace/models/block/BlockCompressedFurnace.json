@@ -1,5 +1,5 @@
 {
-    "parent": "item/generated",
+    "parent": "block/cube",
     "textures": {
         "front": "compressedfurnace:blocks/compressedfurnace_fr_off",
         "down": "compressedfurnace:blocks/furnace_top",
