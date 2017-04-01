@@ -19,13 +19,13 @@ public class CommonProxy {
 		config = new Configuration(new File(directory.getPath(), "compressedfurnace.cfg"));
 		config.getConfigFile();
 		
-		//ModItems.init();
-		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("Items initialized");
+		ModItems.init();
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Items initialized");
 		ModBlocks.init();
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Blocks initialized");
 		
-		//ModItems.register();
-		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("Items registered");
+		ModItems.register();
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Items registered");
 		ModBlocks.register();
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Blocks registered");
 

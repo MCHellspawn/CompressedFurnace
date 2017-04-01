@@ -7,13 +7,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 
-public class BlockCompressedFurnace extends Block {
+public class BlockCompressedCobble extends Block {
 	
-	public BlockCompressedFurnace() {
+	public BlockCompressedCobble() {
 		super(Material.ROCK);
-		setUnlocalizedName(reference.compressedFurnaceBlocks.COMPRESSEDFURNACE.getUnlocalizedName());
-		setRegistryName(reference.compressedFurnaceBlocks.COMPRESSEDFURNACE.getRegistryName());
-		setCreativeTab(CreativeTabs.MISC);
+		setUnlocalizedName(reference.compressedFurnaceBlocks.COMPRESSEDCOBBLE.getUnlocalizedName());
+		setRegistryName(reference.compressedFurnaceBlocks.COMPRESSEDCOBBLE.getRegistryName());
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setHardness(2.0f);
         setResistance(15.0f);
         setHarvestLevel("pickaxe", 1);

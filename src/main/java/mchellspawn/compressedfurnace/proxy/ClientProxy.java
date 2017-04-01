@@ -3,6 +3,7 @@ package mchellspawn.compressedfurnace.proxy;
 import mchellspawn.compressedfurnace.reference;
 import mchellspawn.compressedfurnace.init.ModBlocks;
 import mchellspawn.compressedfurnace.init.ModItems;
+import mchellspawn.compressedfurnace.init.ModRecepies;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -17,8 +18,8 @@ public class ClientProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 		super.preInit(e);
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Client pre-init");
-		//ModItems.registerRenders();			
-		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("Item renders registered");
+		ModItems.registerRenders();			
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Item renders registered");
 		ModBlocks.registerRenders();			
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Block renders registered");
 
@@ -34,6 +35,11 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent e) {
 		super.postInit(e);
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Client post-init");
+		ModItems.postInit();
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Item post init complete");
+		ModBlocks.postInit();
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Block post init complete");
+
 	}
 
 }
