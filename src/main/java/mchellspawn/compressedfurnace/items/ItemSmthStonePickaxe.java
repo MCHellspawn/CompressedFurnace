@@ -1,5 +1,6 @@
 package mchellspawn.compressedfurnace.items;
 
+import mchellspawn.compressedfurnace.compressedfurnace;
 import mchellspawn.compressedfurnace.reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,7 +14,6 @@ public class ItemSmthStonePickaxe extends net.minecraft.item.ItemPickaxe {
 		super(smthstoneToolMaterial);
 		setUnlocalizedName(reference.compressedFurnaceItems.SMTHSTONEPICKAXE.getUnlocalizedName());
 		setRegistryName(reference.compressedFurnaceItems.SMTHSTONEPICKAXE.getRegistryName());
-		setCreativeTab(CreativeTabs.TOOLS);
-		
+		setCreativeTab(compressedfurnace.CREATIVE_TAB_MAIN);
 	}
 }

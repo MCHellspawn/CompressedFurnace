@@ -2,7 +2,11 @@ package mchellspawn.compressedfurnace;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import mchellspawn.compressedfurnace.init.ModBlocks;
 import mchellspawn.compressedfurnace.proxy.CommonProxy;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -21,6 +25,7 @@ public class compressedfurnace
 	public static CommonProxy proxy;
 	
 	public static Logger logger;
+	public static CreativeTabs CREATIVE_TAB_MAIN = new compressedfurnacetab();
 	
 	@EventHandler
     public void preinit(FMLPreInitializationEvent event)

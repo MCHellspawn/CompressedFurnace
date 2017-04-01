@@ -1,5 +1,6 @@
 package mchellspawn.compressedfurnace.blocks;
 
+import mchellspawn.compressedfurnace.compressedfurnace;
 import mchellspawn.compressedfurnace.reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,7 +14,7 @@ public class BlockCompressedFurnace extends Block {
 		super(Material.ROCK);
 		setUnlocalizedName(reference.compressedFurnaceBlocks.COMPRESSEDFURNACE.getUnlocalizedName());
 		setRegistryName(reference.compressedFurnaceBlocks.COMPRESSEDFURNACE.getRegistryName());
-		setCreativeTab(CreativeTabs.MISC);
+		setCreativeTab(compressedfurnace.CREATIVE_TAB_MAIN);
         setHardness(2.0f);
         setResistance(15.0f);
         setHarvestLevel("pickaxe", 1);
