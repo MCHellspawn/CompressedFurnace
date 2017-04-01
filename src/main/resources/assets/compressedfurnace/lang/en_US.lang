@@ -1,3 +1,6 @@
 item.itemsmthstonepickaxe.name=Smooth Stone Pickaxe
+
 tile.blockcompressedfurnace.name=Compressed Furnace
 tile.blockcompressedcobble.name=Compressed Cobblestone
+
+itemGroup.tabCompressedFurnace=Compressed Furnace
