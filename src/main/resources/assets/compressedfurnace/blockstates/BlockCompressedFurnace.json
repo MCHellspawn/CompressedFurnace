@@ -1,22 +1,18 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "textures": {
-        "front": "compressedfurnace:blocks/compressedfurnace_fr_off",
-        "down": "compressedfurnace:blocks/furnace_top",
-        "up": "compressedfurnace:blocks/furnace_top",
-        "east": "compressedfurnace:blocks/furnace_side",
-        "west": "compressedfurnace:blocks/furnace_side",
-        "north": "#front",
-        "south": "compressedfurnace:blocks/furnace_side"
-    }
-  },
-  "variants": {
-    "normal": {
+    "forge_marker": 1,
+    "defaults": {
         "model": "compressedfurnace:BlockCompressedFurnace"
     },
-    "inventory": {
-        "model": "compressedfurnace:BlockCompressedFurnace"
+    "variants": {
+        "normal": [{}],
+        "inventory": [{}],
+        "facing": {
+            "north": {},
+            "south": {"y": 180},
+            "west": {"y": 270},
+            "east": {"y": 90},
+            "up": {"x": -90},
+            "down": {"x": 90}
+        }
     }
-  }
 }

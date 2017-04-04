@@ -1,7 +1,9 @@
 package mchellspawn.compressedfurnace.init;
 
+import mchellspawn.compressedfurnace.reference;
 import mchellspawn.compressedfurnace.blocks.BlockCompressedCobble;
 import mchellspawn.compressedfurnace.blocks.BlockCompressedFurnace;
+import mchellspawn.compressedfurnace.titleentities.CompressedFurnaceTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -25,14 +27,20 @@ public class ModBlocks {
 	public static void postInit() {
 		GameRegistry.addRecipe(new ItemStack(compressedfurnace, 1), "CCC", "C C", "CCC", 'C', ModBlocks.compressedcobble);
 		GameRegistry.addRecipe(new ItemStack(compressedcobble, 1), "CCC", "CCC", "CCC", 'C', Blocks.COBBLESTONE);
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Receipies added.");		
 	}
 	
 	public static void register() {
 		GameRegistry.register(compressedfurnace);
-		GameRegistry.register(new ItemBlock(compressedfurnace), compressedfurnace.getRegistryName());
 		GameRegistry.register(compressedcobble);
-		GameRegistry.register(new ItemBlock(compressedcobble), compressedcobble.getRegistryName());
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Blocks registered.");		
 
+		GameRegistry.register(new ItemBlock(compressedfurnace), compressedfurnace.getRegistryName());
+		GameRegistry.register(new ItemBlock(compressedcobble), compressedcobble.getRegistryName());
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("ItemBlocks registered.");		
+
+		GameRegistry.registerTileEntity(CompressedFurnaceTileEntity.class, reference.MODID + "_compressedfurnace");
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("TileEntities registered.");		
 	}
 	
 	public static void registerRenders() {
