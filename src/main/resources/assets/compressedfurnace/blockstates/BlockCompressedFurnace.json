@@ -1,7 +1,10 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "compressedfurnace:BlockCompressedFurnace"
+        "model": "compressedfurnace:BlockCompressedFurnace",
+        "textures" : {
+            "front": "compressedfurnace:blocks/compressedfurnace_fr_off"
+        }        
     },
     "variants": {
         "normal": [{}],

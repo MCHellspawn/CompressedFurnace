@@ -1,8 +1,7 @@
 {
     "parent": "block/cube",
     "textures": {
-        "particle": "#up",
-        "front": "compressedfurnace:blocks/compressedfurnace_fr_off",
+        "particle": "compressedfurnace:blocks/furnace_top",
         "down": "compressedfurnace:blocks/furnace_top",
         "up": "compressedfurnace:blocks/furnace_top",
         "east": "compressedfurnace:blocks/furnace_side",

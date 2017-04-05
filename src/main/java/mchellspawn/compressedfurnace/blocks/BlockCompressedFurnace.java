@@ -38,6 +38,10 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 		worldIn.setBlockState(pos, state.withProperty(FACING, util.getFacingFromEntity(pos, placer)), 2);
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof CompressedFurnaceTileEntity) {
+			CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity)te; 
+		}
 	}
 
     @Override
