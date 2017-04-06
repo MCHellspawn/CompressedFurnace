@@ -62,16 +62,16 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 	@Override
     public IBlockState getStateFromMeta(int meta) {
 		EnumFacing facing = EnumFacing.getFront(meta);
-		Boolean active = ((meta) >> 3 != 0);		
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
-        return getDefaultState().withProperty(FACING, facing).withProperty(ACTIVE, active);
+		//Boolean active = ((meta & 0x0c) >> 2 != 0);		
+		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
+        return getDefaultState().withProperty(FACING, facing); //.withProperty(ACTIVE, active);
     }
  
     @Override
     public int getMetaFromState(IBlockState state) {
     	int facingbits = state.getValue(FACING).getIndex();
-    	int activebits = (state.getValue(ACTIVE))?1:0 << 3;
-        return facingbits | activebits;
+    	//int activebits = (state.getValue(ACTIVE))?1:0 << 2;
+        return facingbits; //| activebits;
     }
     
     @Override
