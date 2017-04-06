@@ -16,6 +16,18 @@
             "east": {"y": 90},
             "up": {"x": -90},
             "down": {"x": 90}
+        },
+        "active": {
+            "true": {
+                "textures" : {
+                    "front": "compressedfurnace:blocks/furnace_front_on"
+                } 
+            },
+            "false": {
+                "textures" : {
+                    "front": "compressedfurnace:blocks/compressedfurnace_fr_off"
+                } 
+            }
         }
     }
 }

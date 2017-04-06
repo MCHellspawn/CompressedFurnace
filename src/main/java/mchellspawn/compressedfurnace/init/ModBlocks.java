@@ -25,9 +25,6 @@ public class ModBlocks {
 	}
 
 	public static void postInit() {
-		GameRegistry.addRecipe(new ItemStack(compressedfurnace, 1), "CCC", "C C", "CCC", 'C', ModBlocks.compressedcobble);
-		GameRegistry.addRecipe(new ItemStack(compressedcobble, 1), "CCC", "CCC", "CCC", 'C', Blocks.COBBLESTONE);
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Receipies added.");		
 	}
 	
 	public static void register() {

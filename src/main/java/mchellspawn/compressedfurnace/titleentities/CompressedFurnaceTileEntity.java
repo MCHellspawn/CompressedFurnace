@@ -2,10 +2,15 @@ package mchellspawn.compressedfurnace.titleentities;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 
 public class CompressedFurnaceTileEntity extends TileEntity implements ITickable {
@@ -57,8 +62,5 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		// TODO Auto-generated method stub
 		return super.writeToNBT(compound);
-	} 
-	
-	
-
+	}
 }
