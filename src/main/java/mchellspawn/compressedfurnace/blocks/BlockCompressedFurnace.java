@@ -50,28 +50,43 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 		}
 	}
 	
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        super.breakBlock(worldIn, pos, state);
+        worldIn.removeTileEntity(pos);
+    }
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		// TODO Auto-generated method stub
 		super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 		Boolean active = !state.getValue(ACTIVE); 
+		TileEntity te = worldIn.getTileEntity(pos);
+		
+		if (te instanceof CompressedFurnaceTileEntity) {
+			CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity)te; 
+			teinstance.setActive(active);
+		}
+		
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
 		return worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
 	}
 
 	@Override
     public IBlockState getStateFromMeta(int meta) {
-		EnumFacing facing = EnumFacing.getFront(meta);
-		//Boolean active = ((meta & 0x0c) >> 2 != 0);		
-		//mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
+
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Meta = " + meta);
+
+		EnumFacing facing = EnumFacing.getFront((meta>8)?meta-8:meta);
+		//Boolean active = (((meta>8)?meta-8:0) != 0);		
         return getDefaultState().withProperty(FACING, facing); //.withProperty(ACTIVE, active);
     }
  
     @Override
     public int getMetaFromState(IBlockState state) {
     	int facingbits = state.getValue(FACING).getIndex();
-    	//int activebits = (state.getValue(ACTIVE))?1:0 << 2;
-        return facingbits; //| activebits;
+    	//int activebits = ((state.getValue(ACTIVE))?1:0) * 8;
+    	
+        return facingbits;
     }
     
     @Override

@@ -2,6 +2,7 @@ package mchellspawn.compressedfurnace.titleentities;
 
 import javax.annotation.Nullable;
 
+import mchellspawn.compressedfurnace.blocks.BlockCompressedFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -14,11 +15,14 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 
 public class CompressedFurnaceTileEntity extends TileEntity implements ITickable {
+	
+	public static NBTTagCompound nbtcompound = new NBTTagCompound();
+	
+	private boolean active = false;
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
 	@Override 
@@ -56,11 +60,18 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	public void readFromNBT(NBTTagCompound compound) {
 		// TODO Auto-generated method stub
 		super.readFromNBT(compound);
+		this.active = compound.getBoolean("active");
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		// TODO Auto-generated method stub
-		return super.writeToNBT(compound);
+		super.writeToNBT(compound);
+		compound.setBoolean("active", this.active);
+		
+		return compound;
+	}
+	
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 }
