@@ -3,6 +3,7 @@ package mchellspawn.compressedfurnace.titleentities;
 import javax.annotation.Nullable;
 
 import mchellspawn.compressedfurnace.blocks.BlockCompressedFurnace;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,6 +14,8 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class CompressedFurnaceTileEntity extends TileEntity implements ITickable {
 	
@@ -34,6 +37,11 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		int metadata = getBlockMetadata(); 
 		return new SPacketUpdateTileEntity(this.pos, metadata, nbtTagCompound); 
 	} 
+	
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
+	{
+	    return (oldState.getBlock() != newSate.getBlock());
+	}
 	 
 	@Override 
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) { 
