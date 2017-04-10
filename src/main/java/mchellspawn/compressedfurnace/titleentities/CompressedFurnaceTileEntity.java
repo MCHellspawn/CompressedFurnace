@@ -25,7 +25,7 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 
 	@Override
 	public void update() {
-		this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
+		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
 	@Override 
@@ -68,7 +68,8 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	public void readFromNBT(NBTTagCompound compound) {
 		// TODO Auto-generated method stub
 		super.readFromNBT(compound);
-		this.active = compound.getBoolean("active");
+		this.setActive(compound.getBoolean("active"));
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + compound.getBoolean("active"));		
 	}
 
 	@Override
@@ -81,5 +82,6 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	
 	public void setActive(Boolean active) {
 		this.active = active;
+		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, this.active));
 	}
 }
