@@ -69,6 +69,7 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		// TODO Auto-generated method stub
 		super.readFromNBT(compound);
 		this.setActive(compound.getBoolean("active"));
+		
 		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + compound.getBoolean("active"));		
 	}
 
@@ -82,6 +83,9 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	
 	public void setActive(Boolean active) {
 		this.active = active;
-		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, this.active));
+	}
+	
+	public boolean getActive() {
+		return this.active;
 	}
 }

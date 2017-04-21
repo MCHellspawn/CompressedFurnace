@@ -59,16 +59,8 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-		Boolean active = !state.getValue(ACTIVE); 
-		TileEntity te = worldIn.getTileEntity(pos);
 		
-		if (te instanceof CompressedFurnaceTileEntity) {
-			CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity)te; 
-			teinstance.setActive(active);
-		}
-		
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
-		return worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
+		return setActive(worldIn, pos, state, true);		
 	}
 
 	@Override
@@ -96,5 +88,20 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 		return new CompressedFurnaceTileEntity();
 	}
 	
+	public boolean setActive(World worldIn, BlockPos pos, IBlockState state, Boolean updateTE) {
+		Boolean active = !state.getValue(ACTIVE); 
+		
+		if (updateTE) {
+			TileEntity te = worldIn.getTileEntity(pos);
+			
+			if (te instanceof CompressedFurnaceTileEntity) {
+				CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity)te; 
+				teinstance.setActive(active);
+			}
+		}
+		
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active.toString());
+		return worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
+	}
 	
 }
