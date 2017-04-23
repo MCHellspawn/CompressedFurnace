@@ -16,6 +16,7 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CompressedFurnaceTileEntity extends TileEntity implements ITickable {
 	
@@ -28,6 +29,11 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
+	{
+	    return (oldState.getBlock() != newSate.getBlock());
+	}
+	
 	@Override 
 	@Nullable 
 	public SPacketUpdateTileEntity getUpdatePacket() 
@@ -37,18 +43,13 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		int metadata = getBlockMetadata(); 
 		return new SPacketUpdateTileEntity(this.pos, metadata, nbtTagCompound); 
 	} 
-	
-	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
-	{
-	    return (oldState.getBlock() != newSate.getBlock());
-	}
-	 
+		 
 	@Override 
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) { 
 		readFromNBT(pkt.getNbtCompound()); 
+		markDirty();
 	} 
 
-	/* Creates a tag containing the TileEntity information, used by vanilla to transmit from server to client */ 
 	@Override 
 	public NBTTagCompound getUpdateTag() 
 	{ 
@@ -57,20 +58,18 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	   return nbtTagCompound; 
 	} 
 		 
-	/* Populates this TileEntity with information from the tag, used by vanilla to transmit from server to client */ 
 	@Override 
 	public void handleUpdateTag(NBTTagCompound tag) 
 	{ 
-	  this.readFromNBT(tag); 
+	  readFromNBT(tag);
+	  markDirty();
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		// TODO Auto-generated method stub
 		super.readFromNBT(compound);
-		this.setActive(compound.getBoolean("active"));
-		
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + compound.getBoolean("active"));		
+		this.setActive(compound.getBoolean("active"));		
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
 	}
 
 	@Override
