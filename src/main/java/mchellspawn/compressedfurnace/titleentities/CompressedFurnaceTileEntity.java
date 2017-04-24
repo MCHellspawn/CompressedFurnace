@@ -23,9 +23,18 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	public static NBTTagCompound nbtcompound = new NBTTagCompound();
 	
 	private boolean active = false;
-
+	private int burntime = 0;
+	
 	@Override
 	public void update() {
+		if (active && burntime == 0) {
+			setActive(!active);
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
+			markDirty();
+		}
+		
+		burntime--;		
 		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
@@ -67,9 +76,8 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+		//super.readFromNBT(compound);
 		this.setActive(compound.getBoolean("active"));		
-		mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
 	}
 
 	@Override
@@ -82,6 +90,11 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	
 	public void setActive(Boolean active) {
 		this.active = active;
+		if (active) {
+			burntime = 200;
+		} else {
+			burntime = 0;
+		}
 	}
 	
 	public boolean getActive() {

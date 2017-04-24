@@ -5,6 +5,9 @@
 @rem
 @rem ##########################################################################
 
+set GRADLE_USER_HOME=%__CD__:~0,16%Documents\.gradle
+set JAVA_HOME=%__CD__:~0,16%CommonFiles\Java64
+
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
