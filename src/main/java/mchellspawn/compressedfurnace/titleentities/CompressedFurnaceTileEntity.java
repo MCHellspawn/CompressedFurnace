@@ -22,19 +22,26 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	
 	public static NBTTagCompound nbtcompound = new NBTTagCompound();
 	
-	private boolean active = false;
-	private int burntime = 0;
+	private boolean active;
+	private int burntime;
 	
+	public CompressedFurnaceTileEntity() {
+		burntime = 0;
+		active = false;
+	}
+
 	@Override
 	public void update() {
-		if (active && burntime == 0) {
-			setActive(!active);
-			mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
-			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
-			markDirty();
+		if (!this.worldObj.isRemote) {
+			if (active && burntime == 0) {
+				setActive(!active);
+				mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
+				mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
+				markDirty();
+			}
+				
+			burntime--;		
 		}
-		
-		burntime--;		
 		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
@@ -44,9 +51,7 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	}
 	
 	@Override 
-	@Nullable 
-	public SPacketUpdateTileEntity getUpdatePacket() 
-	{ 
+	public SPacketUpdateTileEntity getUpdatePacket() { 
 		NBTTagCompound nbtTagCompound = new NBTTagCompound(); 
 		writeToNBT(nbtTagCompound); 
 		int metadata = getBlockMetadata(); 
@@ -56,24 +61,20 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	@Override 
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) { 
 		readFromNBT(pkt.getNbtCompound()); 
-		markDirty();
 	} 
 
 	@Override 
-	public NBTTagCompound getUpdateTag() 
-	{ 
-	   NBTTagCompound nbtTagCompound = new NBTTagCompound(); 
-	   writeToNBT(nbtTagCompound); 
-	   return nbtTagCompound; 
+	public NBTTagCompound getUpdateTag() { 
+		NBTTagCompound nbtTagCompound = new NBTTagCompound(); 
+		writeToNBT(nbtTagCompound); 
+		return nbtTagCompound; 
 	} 
 		 
 	@Override 
-	public void handleUpdateTag(NBTTagCompound tag) 
-	{ 
-	  readFromNBT(tag);
-	  markDirty();
+	public void handleUpdateTag(NBTTagCompound tag) { 
+		readFromNBT(tag);
 	}
-
+	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		//super.readFromNBT(compound);
