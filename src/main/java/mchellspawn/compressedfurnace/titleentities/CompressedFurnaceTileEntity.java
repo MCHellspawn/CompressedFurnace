@@ -38,6 +38,9 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 				mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
 				mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
 				markDirty();
+				
+				final IBlockState state = getWorld().getBlockState(getPos()); 
+				getWorld().notifyBlockUpdate(getPos(), state, state, 3);
 			}
 				
 			burntime--;		
@@ -77,7 +80,6 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		//super.readFromNBT(compound);
 		this.setActive(compound.getBoolean("active"));		
 	}
 
@@ -96,6 +98,10 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		} else {
 			burntime = 0;
 		}
+		markDirty();
+		
+		final IBlockState state = getWorld().getBlockState(getPos()); 
+		getWorld().notifyBlockUpdate(getPos(), state, state, 3);		
 	}
 	
 	public boolean getActive() {
