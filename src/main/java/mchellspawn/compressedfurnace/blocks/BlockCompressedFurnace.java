@@ -77,9 +77,13 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 
 			if (te instanceof CompressedFurnaceTileEntity) {
 				CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity) te;
-				teinstance.setActive(!teinstance.getActive());
+				Boolean curActive = worldIn.getBlockState(pos).getValue(ACTIVE);
+				Boolean active = !curActive;
+				teinstance.setActive(active);
 
-				worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, teinstance.getActive()));
+				//teinstance.setActive(!teinstance.getActive());
+				
+				worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
 				worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 			}
 		}
