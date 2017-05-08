@@ -73,18 +73,18 @@ public class BlockCompressedFurnace extends Block implements ITileEntityProvider
 		//super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 
 		if (!worldIn.isRemote) {
-			TileEntity te = worldIn.getTileEntity(pos);
+			Boolean curActive = worldIn.getBlockState(pos).getValue(ACTIVE);
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Block Active = " + curActive);
+			Boolean active = !curActive;
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Block Active = " + active);
 
+			worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
+			worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+			
+			TileEntity te = worldIn.getTileEntity(pos);
 			if (te instanceof CompressedFurnaceTileEntity) {
 				CompressedFurnaceTileEntity teinstance = (CompressedFurnaceTileEntity) te;
-				Boolean curActive = worldIn.getBlockState(pos).getValue(ACTIVE);
-				Boolean active = !curActive;
 				teinstance.setActive(active);
-
-				//teinstance.setActive(!teinstance.getActive());
-				
-				worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, active));
-				worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 			}
 		}
 		return true;

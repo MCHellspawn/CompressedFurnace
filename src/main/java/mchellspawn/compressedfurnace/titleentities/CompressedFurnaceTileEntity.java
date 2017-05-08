@@ -32,20 +32,28 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 
 	@Override
 	public void update() {
-		if (!this.worldObj.isRemote) {
-			if (active && burntime == 0) {
-				setActive(!active);
-				mchellspawn.compressedfurnace.compressedfurnace.logger.info("State = " + active);		
-				mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
-				
-				final IBlockState state = getWorld().getBlockState(getPos()); 
-				getWorld().notifyBlockUpdate(getPos(), state, state, 3);
-			}
-				
+		Boolean isDirty = false;
+		
+		if (active && burntime > 0) {
 			burntime--;		
+			isDirty = true;
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("State/Burntime = " + active + "/" + burntime);		
+		}
+
+		if (active && burntime == 0) {
+			setActive(false);
+			isDirty = true;
+			
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("State/Burntime = " + active + "/" + burntime);
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
+		}
+		
+		if(isDirty) {
+			final IBlockState state = getWorld().getBlockState(getPos()); 
+			getWorld().notifyBlockUpdate(getPos(), state, state.withProperty(BlockCompressedFurnace.ACTIVE, active), 3);
+		
 			markDirty();
 		}
-		//this.worldObj.setBlockState(this.pos, this.worldObj.getBlockState(this.pos).withProperty(BlockCompressedFurnace.ACTIVE, active));
 	}
 
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
@@ -64,6 +72,11 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 	@Override 
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) { 
 		readFromNBT(pkt.getNbtCompound()); 
+
+		final IBlockState state = getWorld().getBlockState(getPos()); 
+		getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+
+		mchellspawn.compressedfurnace.compressedfurnace.logger.info("Burntime = " + burntime);
 	} 
 
 	@Override 
@@ -99,10 +112,10 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 		} else {
 			burntime = 0;
 		}
-		markDirty();
+		//markDirty();
 		
-		final IBlockState state = getWorld().getBlockState(getPos()); 
-		getWorld().notifyBlockUpdate(getPos(), state, state, 3);		
+		//final IBlockState state = getWorld().getBlockState(getPos()); 
+		//getWorld().notifyBlockUpdate(getPos(), state, state, 3);		
 	}
 	
 	public boolean getActive() {
