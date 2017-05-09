@@ -48,6 +48,12 @@ public class CompressedFurnaceTileEntity extends TileEntity implements ITickable
 			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Timeout");
 		}
 		
+		if (!active) {
+			Boolean blockactive = getWorld().getBlockState(getPos()).getValue(BlockCompressedFurnace.ACTIVE);
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("Blockstate = " + blockactive);		
+			mchellspawn.compressedfurnace.compressedfurnace.logger.info("State/Burntime = " + active + "/" + burntime);		
+		}
+		
 		if(isDirty) {
 			final IBlockState state = getWorld().getBlockState(getPos()); 
 			getWorld().notifyBlockUpdate(getPos(), state, state.withProperty(BlockCompressedFurnace.ACTIVE, active), 3);
